@@ -10,5 +10,4 @@ Scenario('test something', ({ I, homePage, registerPage }) => {
     registerPage.verifyRegisterAccountText();
     registrationUser.email = Date.now() + '@test.com';
     registerPage.fillRegisxtrationDetails(registrationUser);
-    pause();
 });
