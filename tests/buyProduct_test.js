@@ -12,3 +12,4 @@ Scenario('buy productg', async ({ I, productPage }) => {
     console.log(price);
     I.assertEqual('$60.0', '$60.00', "Prices are not in match");
 }).tag('buy');
+//test
