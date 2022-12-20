@@ -1,10 +1,10 @@
-let productLinks = new DataTable(['link']);
-productLinks.add(['http://opencart.qatestlab.net/index.php?route=product/product&path=31&product_id=40']); // adding records to a table
+let productLinksInDataTable = new DataTable(['link']);
+productLinks.add(['http://opencart.qatestlab.net/index.php?route=product/product&path=31&product_id=40']);
 productLinks.xadd(['http://opencart.qatestlab.net/index.php?route=product/product&path=31&product_id=29']);
 productLinks.xadd(['http://opencart.qatestlab.net/index.php?route=product/product&path=20_260&product_id=36']);
 
 
-let productLinks2 = [{ link: 'http://opencart.qatestlab.net/index.php?route=product/product&path=31&product_id=40' },
+let productLinksInArray = [{ link: 'http://opencart.qatestlab.net/index.php?route=product/product&path=31&product_id=40' },
 { link: 'http://opencart.qatestlab.net/index.php?route=product/product&path=31&product_id=29' }]
 
 let loginUser = {
@@ -12,17 +12,18 @@ let loginUser = {
     password: 'Temp1234%',
 };
 
-const LinksGetter = require('../helpers/productLinksGetter.js');
-let productLinks3 = LinksGetter.getLinks();
-console.log(productLinks3);
+const FileReader = require('../helpers/fileReader.js');
+let productLinksFromTxt = FileReader.getLinksFromTxt();
+let productsFromJson = FileReader.getProductsFromJson();
+console.log(productsFromJson);
 
 Feature('buy');
 
-Before(({ I }) => { // or Background
+Before(({ I }) => {
     I.login(loginUser);
   });
 
-Data(productLinks3).Scenario('buy product', async ({ I, productPage, current }) => {
+Data(productLinksInDataTable).Scenario('buy product', async ({ I, productPage, current }) => {
     I.amOnPage(current.link);
     let price = await productPage.getProductPrice();
     console.log(price);
