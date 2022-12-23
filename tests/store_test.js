@@ -1,3 +1,9 @@
+let loginUser = {
+    email: '1671132098824@test.com',
+    password: 'pwfTuSKfi9jv',
+ 
+ };
+
 let registrationUser = {
     firstName: 'Oleg',
 };
