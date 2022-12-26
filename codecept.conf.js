@@ -28,6 +28,13 @@ exports.config = {
     Converter: {
       require: './helpers/converter_helper.js',
     },
+    REST: {
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    },
+    JSONResponse: {},
   },
   include: {
     "I": "./steps_file.js",
@@ -36,5 +43,10 @@ exports.config = {
     "productPage": "./pages/product.js",
     "helper": "./helpers/helper.js",
   },
-  name: 'js_stream3'
+  name: 'js_stream3',
+  "mocha": {
+    "reporterOptions": {
+        "reportDir": "output"
+    }
+  },
 }
