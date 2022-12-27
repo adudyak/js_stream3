@@ -17,8 +17,13 @@ let productsFromJson = FileReader.getProductsFromJson();
 
 Feature('buy');
 
-Before(({ I }) => {
+Before(async ({ I }) => {
   I.login(loginUser);
+  // clear cart
+  I.click({ css: 'i.linearicons-cart' });
+  for (let i = await I.grabNumberOfVisibleElements({ css: 'i.class"linearicons-trash' }); i > 0; i--) {
+    I.click({ xpath: `(//i[@class"linearicons-trash"])[${i}]` });
+  }
 });
 
 Data(productLinksInDataTable).Scenario('buy product', async ({ I, homePage, productPage, current, helper }) => {
